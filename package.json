@@ -1,0 +1,29 @@
+{
+  "name": "chattypescript",
+  "version": "1.0.0",
+  "description": "creating chat between people in rooms, with the aim of improving studies in TypeScript, Soclet.IO and Http severs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/servidor.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanrodrigues205/ChatTypeScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanrodrigues205/ChatTypeScript/issues"
+  },
+  "homepage": "https://github.com/yanrodrigues205/ChatTypeScript#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.1",
+    "tsx": "^3.12.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

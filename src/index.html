@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com Typescript</title>
+</head>
+<body onload="tempo()">
+    <h4>Chat com Typescript e WebSocket</h4>
+    <div>
+        <ul id="mensagens">
+
+        </ul>
+    </div>
+    <form id="formulario" action="">
+        <input type="text" id="caixa_de_texto" autocomplete="off" placeholder="digite sua mensagem" required>
+        <button>Enviar</button>
+    </form>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        const div_mensagens = document.getElementById("mensagens");
+        const caixa_de_texto = document.getElementById("caixa_de_texto");
+  
+ 
+        function tempo(){
+            data = new Date();
+            data_atual = data.getDate() +"/"+data.getMonth()+"/"+data.getFullYear()+" "+data.getHours()+":"+data.getMinutes()+":"+data.getSeconds();
+            setTimeout('tempo()', 1000);
+        }
+      
+
+        document.addEventListener("submit", (e) =>{
+            e.preventDefault();
+            if(caixa_de_texto.value != ""){
+                socket.emit("mensagem",caixa_de_texto.value + " - "+ data_atual);
+                caixa_de_texto.value = "";
+            }else{
+                alert("Para enviar mensagem e necesario ao minimo 1 caracter!");
+            }
+        });
+
+
+        socket.on("mensagem", (texto)=>{
+            const mensagem = document.createElement("li");
+            mensagem.textContent = texto;
+            div_mensagens.appendChild(mensagem);
+        });
+        
+        
+    </script>
+
+
+</body>
+</html>
